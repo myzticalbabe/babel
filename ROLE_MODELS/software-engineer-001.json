@@ -1,0 +1,17 @@
+{
+  "name": "Alex",
+  "title": "Software Engineer",
+  "story": "I write code that helps scientists track endangered species. I started coding at 28 after teaching yoga for five years. I'm also a queer non-binary person who loves speculative fiction and baking sourdough. Code is just another language for solving puzzles.",
+  "stereotypes_challenged": [
+    "late starter",
+    "yoga teacher",
+    "queer",
+    "non-binary",
+    "baker"
+  ],
+  "hobbies": [
+    "yoga",
+    "speculative fiction",
+    "sourdough"
+  ]
+}

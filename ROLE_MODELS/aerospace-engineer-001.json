@@ -1,0 +1,14 @@
+{
+  "name": "Sam",
+  "title": "Aerospace Engineer",
+  "story": "I design satellite propulsion systems. As a kid, I launched model rockets from my driveway \u2014 sometimes into the neighbor's yard. I'm also a FIRST Robotics mentor and play the ukulele badly but enthusiastically. Failure is just data with a cool story.",
+  "stereotypes_challenged": [
+    "ukulele player",
+    "FIRST mentor",
+    "failure-positive"
+  ],
+  "hobbies": [
+    "ukulele",
+    "robotics mentoring"
+  ]
+}

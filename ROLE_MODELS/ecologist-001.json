@@ -1,0 +1,15 @@
+{
+  "name": "Dr. Chen",
+  "title": "Marine Ecologist",
+  "story": "I study how kelp forests survive warming oceans. I grew up tide-pooling with my grandfather in Taiwan. I'm also a traditional calligrapher and marathon runner. Science and art both require patience and attention to detail.",
+  "stereotypes_challenged": [
+    "Asian scientist",
+    "calligrapher",
+    "runner",
+    "elder-influenced"
+  ],
+  "hobbies": [
+    "calligraphy",
+    "marathon running"
+  ]
+}
