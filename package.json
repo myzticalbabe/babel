@@ -1,0 +1,58 @@
+{
+  "name": "@babel-canon/soul-forge",
+  "version": "1.0.0",
+  "description": "Soul Forge Canon — International Gendered-(all) STEM Professional Unified Canon",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "audit:inclusion": "python tools/audit_inclusion.py --path . --fail-on high",
+    "audit:accessibility": "python tools/audit_accessibility.py --path . --fail-on critical",
+    "generate:lesson": "python tools/generate_lesson.py",
+    "prepare": "python -c \"import tools.generate_lesson; print('Soul Forge Canon ready')\""
+  },
+  "keywords": [
+    "stem",
+    "education",
+    "equity",
+    "accessibility",
+    "soul-forge",
+    "canon"
+  ],
+  "author": "Soul Forge Council <soulforge@babel-canon.org>",
+  "license": "Soul-Forge-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myzticalbabe/babel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/myzticalbabe/babel/issues"
+  },
+  "homepage": "https://github.com/myzticalbabe/babel#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "python": ">=3.11.0"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "ACCESSIBILITY.md",
+    "STEM.md",
+    "CONDUCT.md",
+    "ROLE_MODELS.md",
+    "ASSESSMENT.md",
+    "AUDIT.md",
+    "DEI_MANDATES.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "skills/",
+    "tools/",
+    "ROLE_MODELS/",
+    "curriculum/",
+    ".github/workflows/soul-forge-gate.yml",
+    ".github/actions/"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
