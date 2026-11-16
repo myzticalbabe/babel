@@ -1,12 +1,13 @@
 {
   "name": "@babel-canon/soul-forge",
-  "version": "1.0.0",
-  "description": "Soul Forge Canon — International Gendered-(all) STEM Professional Unified Canon",
+  "version": "2.0.0-hyper-edge",
+  "description": "Soul Forge Canon — International Gendered-(all) STEM Professional Unified Canon — Hyper-Edge Evolution",
   "main": "index.js",
   "scripts": {
     "test": "node test.js",
     "audit:inclusion": "python tools/audit_inclusion.py --path . --fail-on high",
     "audit:accessibility": "python tools/audit_accessibility.py --path . --fail-on critical",
+    "audit:creative-resolution": "python -c \"from tools.creative_resolution_engine import CreativeResolutionSynthesizer; print('Creative Resolution Engine ready')\"",
     "generate:lesson": "python tools/generate_lesson.py",
     "prepare": "python -c \"import tools.generate_lesson; print('Soul Forge Canon ready')\""
   },
@@ -16,7 +17,12 @@
     "equity",
     "accessibility",
     "soul-forge",
-    "canon"
+    "canon",
+    "hyper-edge",
+    "creative-resolution",
+    "neuroadaptive",
+    "embodied-learning",
+    "indigenous-knowledge"
   ],
   "author": "Soul Forge Council <soulforge@babel-canon.org>",
   "license": "Soul-Forge-1.0",
@@ -42,6 +48,8 @@
     "ASSESSMENT.md",
     "AUDIT.md",
     "DEI_MANDATES.md",
+    "DYNAMIC_FIELDS.md",
+    "CREATIVE_RESOLUTION_ENGINE.md",
     "CONTRIBUTING.md",
     "CODE_OF_CONDUCT.md",
     "skills/",

@@ -2,7 +2,7 @@
  * Soul Forge Canon — International Gendered-(all) STEM Professional Unified Canon
  * 
  * @module @babel-canon/soul-forge
- * @version 1.0.0
+ * @version 2.0.0-hyper-edge
  * @license Soul-Forge-1.0
  */
 
@@ -11,9 +11,9 @@ const path = require('path');
 
 const CANON_METADATA = {
   name: '@babel-canon/soul-forge',
-  version: '1.0.0',
+  version: '2.0.0-hyper-edge',
   name: 'Soul Forge Canon',
-  description: 'International Gendered-(all) STEM Professional Unified Canon',
+  description: 'International Gendered-(all) STEM Professional Unified Canon — Hyper-Edge Evolution',
   license: 'Soul-Forge-1.0',
   licenseUrl: 'https://github.com/myzticalbabe/babel/blob/master/LICENSE',
   repository: 'https://github.com/myzticalbabe/babel',
@@ -25,7 +25,9 @@ const CANON_METADATA = {
     { id: 5, title: 'Mentorship & Role Model Registry', file: 'ROLE_MODELS.md', vow: 'Springer 2026' },
     { id: 6, title: 'Assessment & Certification', file: 'ASSESSMENT.md', vow: 'Mastery + Identity' },
     { id: 7, title: 'Audit & Compliance', file: 'AUDIT.md', vow: 'Two Auditors' },
-    { id: 8, title: 'DEI Mandates', file: 'DEI_MANDATES.md', vow: 'Eight Edicts' }
+    { id: 8, title: 'DEI Mandates', file: 'DEI_MANDATES.md', vow: 'Eight Edicts' },
+    { id: 9, title: 'Dynamic Field Auto-Generation', file: 'DYNAMIC_FIELDS.md', vow: 'Knowledge Base Integration' },
+    { id: 10, title: 'Creative Resolution Engine', file: 'CREATIVE_RESOLUTION_ENGINE.md', vow: 'Hyper-Edge Evolution' }
   ],
   skills: [
     'FACILITATION_SKILLS',
@@ -37,7 +39,11 @@ const CANON_METADATA = {
   tools: [
     'audit_inclusion.py',
     'audit_accessibility.py',
-    'generate_lesson.py'
+    'generate_lesson.py',
+    'creative_resolution_engine/cognitive_diversity_engine.py',
+    'creative_resolution_engine/adaptive_equity_calibrator.py',
+    'creative_resolution_engine/boundary_infrastructure_inclusion.py',
+    'creative_resolution_engine/creative_resolution_synthesizer.py'
   ],
   governance: {
     council: [
@@ -67,7 +73,9 @@ function getBook(bookId) {
     5: 'ROLE_MODELS.md',
     6: 'ASSESSMENT.md',
     7: 'AUDIT.md',
-    8: 'DEI_MANDATES.md'
+    8: 'DEI_MANDATES.md',
+    9: 'DYNAMIC_FIELDS.md',
+    10: 'CREATIVE_RESOLUTION_ENGINE.md'
   };
   
   const file = bookFiles[bookId];
@@ -127,6 +135,18 @@ function runAccessibilityAudit(options = {}) {
   };
 }
 
+function runCreativeResolutionAudit(options = {}) {
+  const { spawnSync } = require('child_process');
+  const result = spawnSync('python', [
+    '-c', 'from tools.creative_resolution_engine import CreativeResolutionSynthesizer; print("Creative Resolution Engine ready")'
+  ], { encoding: 'utf-8', cwd: __dirname });
+  return {
+    success: result.status === 0,
+    stdout: result.stdout,
+    stderr: result.stderr
+  };
+}
+
 function generateLesson(options = {}) {
   const { spawnSync } = require('child_process');
   const args = [
@@ -154,5 +174,6 @@ module.exports = {
   listRoleModels,
   runInclusionAudit,
   runAccessibilityAudit,
+  runCreativeResolutionAudit,
   generateLesson
 };
