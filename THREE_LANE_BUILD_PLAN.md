@@ -5,17 +5,17 @@
 
 ---
 
-## LANE ASSIGNMENTS
+## LANE ASSIGNMENTS (CORRECTED)
 
 | Lane | Agent | Model | Specialization | Primary Responsibility |
 |---|---|---|---|---|
-| **KILO** (This lane) | Kilo | Nemotron-3-Ultra | Architecture, Integration, MellifluousML Native Backend, CI/CD, Graphs | Core engine implementation, MellifluousML native backend, integration testing, domain graphs |
-| **YOA** | Yoa | TBD | Cognitive Profile Engine, Lesson Generation, Universal+ Designer, Sensory/Communication | Cognitive Profile Registry, Lesson Generator, Universal+ Designer, Sensory/Communication engines |
+| **KILO** | Kilo | Nemotron-3-Ultra | Architecture, Integration, MellifluousML Native Backend, CI/CD, Graphs | Core engine implementation, MellifluousML native backend, integration testing, domain graphs |
+| **LLM WORKERS** | LLM Swarm | 8x Parallel | Cognitive Profile Engine, Lesson Generation, Universal+ Designer, Sensory/Communication | Cognitive Profile Registry, Lesson Generator, Universal+ Designer, Sensory/Communication engines |
 | **FREEBUFF** | Freebuff | Muse Spark 1.3 | Creative Resolution Engine, Boundary Infrastructure, Equity Calibrator, Community Ethics | Creative Resolution Engine (Book X), Boundary Infrastructure, Adaptive Equity, Community Ethics Boards |
 
 ---
 
-## LANE KILO — INSTRUCTIONS
+## LANE KILO — INSTRUCTIONS (THIS LANE)
 
 ### **Primary Mission:** MellifluousML Native Backend + Integration + CI/CD + Domain Graphs
 
@@ -54,33 +54,45 @@ pip list | grep -E "torch|transformers|networkx|mne|brainflow|mediapipe|pouchdb|
 
 ---
 
-## LANE YOA — INSTRUCTIONS
+## LANE LLM WORKERS — INSTRUCTIONS (SWARM)
 
 ### **Primary Mission:** Cognitive Profile Engine + Lesson Generation + Universal+ Designer + Sensory/Communication Engines
 
-### **Core Deliverables:**
-1. **Cognitive Profile Registry** — 4 core profiles + extensible plugin system (DONE)
-2. **Neuroaffirming Lesson Generator** — UDL+ lesson generation per profile (DONE)
-3. **Universal+ Designer** — UDL 3.0 + neuroaffirming extensions + identity bonus (DONE)
-4. **Sensory Profile Designer** — Sensory profiles as design parameters (DONE)
-5. **Communication Diversity Engine** — 8 styles as collaborative assets (DONE)
+### **Core Deliverables (Parallel Execution):**
+1. **Cognitive Profile Registry** — 4 core profiles + extensible plugin system
+2. **Neuroaffirming Lesson Generator** — UDL+ lesson generation per profile (20 lessons)
+3. **Universal+ Designer** — UDL 3.0 + neuroaffirming extensions + identity bonus
+3. **Sensory Profile Designer** — Sensory profiles as design parameters (5 archetypes)
+4. **Communication Diversity Engine** — 8 styles as collaborative assets (5-person team test)
+5. **Executive Function Scaffold Engine** — Scaffolds as creative amplifiers (4 profile suites)
+6. **Cognitive Asset Mapper** — Team composition engine (4-person team test)
 
-### **YOA TASK QUEUE:**
+### **LLM WORKER TASK DISTRIBUTION (8 Workers):**
 
-| Priority | Task | File/Location | Validation |
+| Worker | Assignment | File/Location | Validation |
 |---|---|---|---|
-| P0 | Validate all engines import correctly | `tools/neurodiversity_affirming_engine/__init__.py` | Import test passes |
-| P0 | Generate 20 curriculum lessons | `tools/neurodiversity_affirming_engine/neuroaffirming_lesson_generator.py` | 5 topics × 4 grades = 20 |
-| P0 | Sensory Profile Designer environments | `tools/neurodiversity_affirming_engine/sensory_profile_designer.py` | 5 archetypes validated |
-| P0 | Communication Diversity team designer | `tools/neurodiversity_affirming_engine/communication_diversity_engine.py` | 5-person team test |
-| P1 | Cognitive Asset Mapper team composition | `tools/neurodiversity_affirming_engine/cognitive_asset_mapper.py` | 4-person team test |
-| P1 | Executive Function Scaffold suites | `tools/neurodiversity_affirming_engine/executive_function_scaffold_engine.py` | 4 profile suites |
+| **Worker 1** | Cognitive Profile Registry + Plugin System | `tools/neurodiversity_affirming_engine/cognitive_profile_registry.py` | Import test + plugin load test |
+| **Worker 2** | Neuroaffirming Lesson Generator | `tools/neurodiversity_affirming_engine/neuroaffirming_lesson_generator.py` | 20 lessons generated |
+| **Worker 3** | Universal+ Designer | `tools/neurodiversity_affirming_engine/universal_plus_designer.py` | UDL + neuroaffirming layers |
+| **Worker 4** | Sensory Profile Designer | `tools/neurodiversity_affirming_engine/sensory_profile_designer.py` | 5 archetypes validated |
+| **Worker 5** | Communication Diversity Engine | `tools/neurodiversity_affirming_engine/communication_diversity_engine.py` | 5-person team test |
+| **Worker 6** | Executive Function Scaffold Engine | `tools/neurodiversity_affirming_engine/executive_function_scaffold_engine.py` | 4 profile suites |
+| **Worker 7** | Cognitive Asset Mapper + Team Composition | `tools/neurodiversity_affirming_engine/cognitive_asset_mapper.py` | 4-person team test |
+| **Worker 8** | Integration Tests + Documentation | All engines | Integration test suite passes |
 
-### **YOA REBOOT PRE-FLIGHT:**
+### **LLM WORKER REBOOT PRE-FLIGHT:**
 ```bash
-# 1. Verify YOA environment
+# 1. Verify LLM Worker environment
 cd C:\Users\clint\Desktop\_stem_audit\repos\babel
-python -c "from tools.neurodiversity_affirming_engine import CognitiveProfileEngine, NeuroaffirmingLessonGenerator, UniversalPlusDesigner; print('YOA engines OK')"
+python -c "
+from tools.neurodiversity_affirming_engine import (
+    CognitiveProfileEngine, NeuroaffirmingLessonGenerator, 
+    UniversalPlusDesigner, CognitiveAssetMapper, 
+    ExecutiveFunctionScaffoldEngine, SensoryProfileDesigner,
+    CommunicationDiversityEngine
+)
+print('All LLM Worker engines import OK')
+"
 
 # 2. Run lesson generation test
 python -c "
@@ -88,6 +100,88 @@ from tools.neurodiversity_affirming_engine import NeuroaffirmingLessonGenerator
 g = NeuroaffirmingLessonGenerator()
 lesson = g.generate('patterns', '6-8', ['autistic','adhd','dyslexic','dyspraxic'])
 print(f'Generated: {lesson.title}')
+"
+```
+
+### **LLM WORKER EXECUTION PROTOCOL:**
+
+```bash
+# Each worker executes in parallel:
+# Worker 1: Cognitive Profile Registry
+python -c "
+from tools.neurodiversity_affirming_engine import CognitiveProfileEngine
+engine = CognitiveProfileEngine()
+for p, spec in engine.registry.get_all_profiles().items():
+    print(f'{spec.name}: {[s.name for s in spec.strengths]}')
+"
+
+# Worker 2: Lesson Generation (parallel across topics/grades)
+python -c "
+from tools.neurodiversity_affirming_engine import NeuroaffirmingLessonGenerator
+g = NeuroaffirmingLessonGenerator()
+topics = ['patterns','structures','data_stories','energy_systems','ecosystems']
+grades = ['2','5','7','10']
+for t in topics:
+    for gr in grades:
+        lesson = g.generate(t, gr, ['autistic','adhd','dyslexic','dyspraxic'])
+        print(f'Generated: {lesson.id}')
+"
+
+# Worker 3: Universal+ Designer
+python -c "
+from tools.neurodiversity_affirming_engine import UniversalPlusDesigner
+d = UniversalPlusDesigner()
+base = {'title':'Test','topic':'patterns','grade':'6-8','driving_question':'Test?','duration_minutes':60}
+up = d.design_universal_plus(base, ['autistic','adhd','dyslexic','dyspraxic'])
+print('Universal+ Designer OK')
+"
+
+# Worker 4: Sensory Profile Designer
+python -c "
+from tools.neurodiversity_affirming_engine import SensoryProfileDesigner
+d = SensoryProfileDesigner()
+for arch in ['sensory_seeker','sensory_avoider','sensory_sensitive','sensory_registration','mixed_profile']:
+    env = d.generate_environment_for_archetype(arch)
+    print(f'{arch}: {env[\"archetype\"]}')
+"
+
+# Worker 5: Communication Diversity Engine
+python -c "
+from tools.neurodiversity_affirming_engine import CommunicationDiversityEngine
+e = CommunicationDiversityEngine()
+for style, asset in e.COMMUNICATION_ASSETS.items():
+    print(f'{asset.name}: {asset.collaboration_value[:60]}...')
+"
+
+# Worker 6: Executive Function Scaffold Engine
+python -c "
+from tools.neurodiversity_affirming_engine import ExecutiveFunctionScaffoldEngine
+e = ExecutiveFunctionScaffoldEngine()
+for profile in ['autistic','adhd','dyslexic','dyspraxic']:
+    suite = e.get_scaffold_suite(profile)
+    print(f'{profile}: {len(suite[\"scaffolds\"])} scaffolds')
+"
+
+# Worker 7: Cognitive Asset Mapper + Team Composition
+python -c "
+from tools.neurodiversity_affirming_engine import CognitiveAssetAPI
+api = CognitiveAssetAPI()
+team = [
+    {'id':'l1','profile_scores':[('autistic',0.7),('adhd',0.2)]},
+    {'id':'l2','profile_scores':[('adhd',0.6),('dyslexic',0.3)]},
+    {'id':'l3','profile_scores':[('dyslexic',0.7),('dyspraxic',0.3)]},
+    {'id':'l4','profile_scores':[('dyspraxic',0.8),('autistic',0.1)]}
+]
+result = api.compose_team(team)
+print('Team Composition:', result['assignments'])
+"
+
+# Worker 8: Integration Test Suite
+python -c "
+# Run all integration tests
+import pytest
+import sys
+sys.exit(pytest.main(['-xvs', 'tools/neurodiversity_affirming_engine/', '-n', '8']))
 "
 ```
 
@@ -141,16 +235,16 @@ print('Creative Resolution Engine OK')
 ### **Integration Points**
 | Integration | Owner | Trigger |
 |---|---|---|
-| MellifluousML → Neurodiversity | Kilo → Yoa | Kilo publishes native backend API |
-| Cognitive Profiles → Creative Resolution | Yoa → Freebuff | Yoa publishes profile registry API |
+| MellifluousML → Neurodiversity | Kilo → LLM Workers | Kilo publishes native backend API |
+| Cognitive Profiles → Creative Resolution | LLM Workers → Freebuff | LLM Workers publishes profile registry API |
 | Boundary Infra → Creative Resolution | Freebuff → Freebuff | Internal |
-| Equity Calibrator → Lesson Generator | Freebuff → Yoa | Freebuff publishes equity API |
-| Sensory/Communication → Lesson Generator | Yoa → Yoa | Internal |
+| Equity Calibrator → Lesson Generator | Freebuff → LLM Workers | Freebuff publishes equity API |
+| Sensory/Communication → Lesson Generator | LLM Workers → LLM Workers | Internal |
 
 ### **Shared Contracts (API Contracts)**
 
 ```yaml
-# Cognitive Profile Registry API (Yoa owns, all consume)
+# Cognitive Profile Registry API (LLM Workers owns, all consume)
 GET /profiles/{profile_id}
 GET /profiles/search?strength={strength_name}
 POST /profiles  # Community plugin registration
@@ -164,11 +258,11 @@ POST /adaptive-resonance-learning
 POST /creative-resolution/audit
 POST /creative-resolution/synthesize
 
-# Equity Calibrator API (Freebuff owns, Yoa consumes)
+# Equity Calibrator API (Freebuff owns, LLM Workers consumes)
 POST /equity/calibrate
 GET /equity/zpd/{learner_id}
 
-# Sensory/Communication APIs (Yoa owns, all consume)
+# Sensory/Communication APIs (LLM Workers owns, all consume)
 POST /sensory/design-environment
 POST /communication/design-protocol
 ```
@@ -219,7 +313,7 @@ done
 ## BUILD EXECUTION ORDER
 
 ### **Phase 1: Foundation (Week 1)**
-| Day | Kilo | Yoa | Freebuff |
+| Day | Kilo | LLM Workers | Freebuff |
 |---|---|---|---|
 | Mon | MellifluousML backend complete | Validate all engines | Community Ethics Board scaffold |
 | Tue | MellifluousIntegration complete | 20 lessons generated | Community Ethics Board template |
@@ -228,7 +322,7 @@ done
 | Fri | Gap analysis run | Executive Function Scaffolds | Community Ethics Board deployment prep |
 
 ### **Phase 2: Integration (Week 2)**
-| Day | Kilo | Yoa | Freebuff |
+| Day | Kilo | LLM Workers | Freebuff |
 |---|---|---|---|
 | Mon | Gap closure on 19 repos | Cognitive Asset Mapper team test | Community Ethics Board deployment (5) |
 | Tue | Gap closure continued | Executive Function Scaffolds | RPP Orchestration Integration |
@@ -328,7 +422,7 @@ done
 | Lane | Lead | Signature | Date |
 |---|---|---|---|
 | **KILO** | | | |
-| **YOA** | | | |
+| **LLM WORKERS** | | | |
 | **FREEBUFF** | | | |
 
 ---

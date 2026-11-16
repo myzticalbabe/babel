@@ -115,7 +115,7 @@ print('All MellifluousML exports OK')
 "
 ```
 
-### **YOA LANE PRE-FLIGHT**
+### **LLM WORKERS LANE PRE-FLIGHT**
 ```bash
 # 1. Verify all engines import
 python -c "
@@ -125,7 +125,7 @@ from tools.neurodiversity_affirming_engine import (
     ExecutiveFunctionScaffoldEngine, SensoryProfileDesigner,
     CommunicationDiversityEngine
 )
-print('All YOA engines import OK')
+print('All LLM Worker engines import OK')
 "
 
 # 2. Test lesson generation
@@ -134,7 +134,6 @@ from tools.neurodiversity_affirming_engine import NeuroaffirmingLessonGenerator
 g = NeuroaffirmingLessonGenerator()
 lesson = g.generate('patterns', '6-8', ['autistic','adhd','dyslexic','dyspraxic'])
 print(f'Generated: {lesson.title}')
-print(f'Profiles: {lesson.cognitive_profile_focus}')
 "
 
 # 3. Test Universal+ Designer
@@ -151,19 +150,24 @@ print('Universal+ Designer OK')
 ```bash
 # 1. Verify Creative Resolution Engine
 python -c "
-from tools.creative_resolution_engine import (
-    CreativeResolutionSynthesizer, AdaptiveEquityCalibrator, 
-    BoundaryInfrastructureForInclusion
-)
+from tools.creative_resolution_engine import CreativeResolutionSynthesizer, AdaptiveEquityCalibrator, BoundaryInfrastructureForInclusion
 s = CreativeResolutionSynthesizer()
 print('Creative Resolution Engine OK')
 "
 
-# 2. Verify Community Ethics Board scaffold
-ls -la C:\Users\clint\Desktop\_stem_audit\repos\babel\tools\creative_resolution_engine\community_ethics_board.py 2>$null || echo "Needs creation"
+# 2. Create Community Ethics Board scaffold
+mkdir -p tools/creative_resolution_engine/community_ethics_board
+# Create models.py, views.py, governance.py, ipfs_integration.py
 
-# 3. Verify Community Ethics Board template exists
-ls -la C:\Users\clint\Desktop\_stem_audit\repos\babel\COMMUNITY_ETHICS_BOARD_TEMPLATE.md 2>$null || echo "Needs creation"
+# 3. Create Community Ethics Board template
+cat > COMMUNITY_ETHICS_BOARD_TEMPLATE.md << 'EOF'
+# Community Ethics Board Template
+## Governance
+## Data Sovereignty
+## Veto Power
+## Membership
+## Review Process
+EOF
 ```
 
 ---
@@ -198,8 +202,8 @@ gh --version
 cd C:\Users\clint\Desktop\_stem_audit\repos\babel
 python -c "from tools.neurodiversity_affirming_engine import MellifluousIntegration; print('KILO OK')"
 
-# YOA
-python -c "from tools.neurodiversity_affirming_engine import NeuroaffirmingLessonGenerator; print('YOA OK')"
+# LLM WORKERS
+python -c "from tools.neurodiversity_affirming_engine import NeuroaffirmingLessonGenerator; print('LLM WORKERS OK')"
 
 # FREEBUFF
 python -c "from tools.creative_resolution_engine import CreativeResolutionSynthesizer; print('FREEBUFF OK')"
@@ -228,11 +232,19 @@ cd C:\Users\clint\Desktop\_stem_audit\repos && py -3.13 azazael/tools/domain_tre
 cd C:\Users\clint\Desktop && py -3.13 _stem_audit/stem_gap_analysis_all_trees.py
 ```
 
-### **YOA — Execute Build**
+### **LLM WORKERS — Execute Build (Parallel)**
 ```bash
 cd C:\Users\clint\Desktop\_stem_audit\repos\babel
 
-# 1. Generate all 20 lessons
+# Worker 1: Cognitive Profile Registry
+python -c "
+from tools.neurodiversity_affirming_engine import CognitiveProfileEngine
+engine = CognitiveProfileEngine()
+for p, spec in engine.registry.get_all_profiles().items():
+    print(f'{spec.name}: {[s.name for s in spec.strengths]}')
+"
+
+# Worker 2: Lesson Generation (parallel across topics/grades)
 python -c "
 from tools.neurodiversity_affirming_engine import NeuroaffirmingLessonGenerator
 g = NeuroaffirmingLessonGenerator()
@@ -244,7 +256,7 @@ for t in topics:
         print(f'Generated: {lesson.id}')
 "
 
-# 2. Test Universal+ Designer
+# Worker 3: Universal+ Designer
 python -c "
 from tools.neurodiversity_affirming_engine import UniversalPlusDesigner
 d = UniversalPlusDesigner()
@@ -253,13 +265,51 @@ up = d.design_universal_plus(base, ['autistic','adhd','dyslexic','dyspraxic'])
 print('Universal+ Designer OK')
 "
 
-# 3. Test Sensory Profile Designer
+# Worker 4: Sensory Profile Designer
 python -c "
 from tools.neurodiversity_affirming_engine import SensoryProfileDesigner
 d = SensoryProfileDesigner()
 for arch in ['sensory_seeker','sensory_avoider','sensory_sensitive','sensory_registration','mixed_profile']:
     env = d.generate_environment_for_archetype(arch)
     print(f'{arch}: {env[\"archetype\"]}')
+"
+
+# Worker 5: Communication Diversity Engine
+python -c "
+from tools.neurodiversity_affirming_engine import CommunicationDiversityEngine
+e = CommunicationDiversityEngine()
+for style, asset in e.COMMUNICATION_ASSETS.items():
+    print(f'{asset.name}: {asset.collaboration_value[:60]}...')
+"
+
+# Worker 6: Executive Function Scaffold Engine
+python -c "
+from tools.neurodiversity_affirming_engine import ExecutiveFunctionScaffoldEngine
+e = ExecutiveFunctionScaffoldEngine()
+for profile in ['autistic','adhd','dyslexic','dyspraxic']:
+    suite = e.get_scaffold_suite(profile)
+    print(f'{profile}: {len(suite[\"scaffolds\"])} scaffolds')
+"
+
+# Worker 7: Cognitive Asset Mapper + Team Composition
+python -c "
+from tools.neurodiversity_affirming_engine import CognitiveAssetAPI
+api = CognitiveAssetAPI()
+team = [
+    {'id':'l1','profile_scores':[('autistic',0.7),('adhd',0.2)]},
+    {'id':'l2','profile_scores':[('adhd',0.6),('dyslexic',0.3)]},
+    {'id':'l3','profile_scores':[('dyslexic',0.7),('dyspraxic',0.3)]},
+    {'id':'l4','profile_scores':[('dyspraxic',0.8),('autistic',0.1)]}
+]
+result = api.compose_team(team)
+print('Team Composition:', result['assignments'])
+"
+
+# Worker 8: Integration Test Suite
+python -c "
+import pytest
+import sys
+sys.exit(pytest.main(['-xvs', 'tools/neurodiversity_affirming_engine/', '-n', '8']))
 "
 ```
 
@@ -373,7 +423,7 @@ python -c "from tools.neurodiversity_affirming_engine import MellifluousIntegrat
 
 ## SIGN-OFF
 
-| Checklist | Kilo | Yoa | Freebuff |
+| Checklist | Kilo | LLM Workers | Freebuff |
 |---|---|---|---|
 | Environment clean | ☐ | ☐ | ☐ |
 | Git clean | ☐ | ☐ | ☐ |
