@@ -78,12 +78,12 @@ TOPICS = {
         "role_models": ["ecologist-001"],
         "materials_base": ["jar", "water", "plants"],
     },
-    "rockets": {
-        "ngss_core": "NGSS-MS-PS2",
-        "csta_core": "CSTA-1B-CS",
-        "practices": ["Investigation", "Normalized Struggle", "Stereotype Challenge"],
-        "role_models": ["aerospace-engineer-001"],
-        "materials_base": ["film canister", "alka-seltzer", "water"],
+    "earth-systems": {
+        "ngss_core": "NGSS-MS-ESS2",
+        "csta_core": "CSTA-1B-DA",
+        "practices": ["Belonging and Relevance", "Investigation", "Normalized Struggle", "Collaborative Work"],
+        "role_models": ["earth-systems-engineer-001"],
+        "materials_base": ["soil", "rocks", "water", "plants", "magnifying glass"],
     },
 }
 
@@ -116,12 +116,12 @@ ROLE_MODEL_TEMPLATES = {
         "stereotypes_challenged": ["Asian scientist", "calligrapher", "runner", "elder-influenced"],
         "hobbies": ["calligraphy", "marathon running"],
     },
-    "aerospace-engineer-001": {
-        "name": "Sam",
-        "title": "Aerospace Engineer",
-        "story": "I design satellite propulsion systems. As a kid, I launched model rockets from my driveway — sometimes into the neighbor's yard. I'm also a FIRST Robotics mentor and play the ukulele badly but enthusiastically. Failure is just data with a cool story.",
-        "stereotypes_challenged": ["ukulele player", "FIRST mentor", "failure-positive"],
-        "hobbies": ["ukulele", "robotics mentoring"],
+    "earth-systems-engineer-001": {
+        "name": "Dr. Rivera",
+        "title": "Earth Systems Engineer",
+        "story": "I design living infrastructure that heals watersheds and rebuilds soil carbon. As a kid, I collected rocks from every hike — my pockets were always full. I'm also a potter and seed saver. My path wasn't straight: I was the first in my family to go to college, and field access was never guaranteed. Now I engineer living systems that heal the critical zone — the skin of the Earth where rock meets life.",
+        "stereotypes_challenged": ["first_gen_college", "potter", "seed_saver", "field_access"],
+        "hobbies": ["hiking", "pottery", "seed_saving"],
     },
 }
 

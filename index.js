@@ -43,7 +43,15 @@ const CANON_METADATA = {
     'creative_resolution_engine/cognitive_diversity_engine.py',
     'creative_resolution_engine/adaptive_equity_calibrator.py',
     'creative_resolution_engine/boundary_infrastructure_inclusion.py',
-    'creative_resolution_engine/creative_resolution_synthesizer.py'
+    'creative_resolution_engine/creative_resolution_synthesizer.py',
+    'neurodiversity_affirming_engine/cognitive_profile_registry.py',
+    'neurodiversity_affirming_engine/neuroaffirming_lesson_generator.py',
+    'neurodiversity_affirming_engine/cognitive_asset_mapper.py',
+    'neurodiversity_affirming_engine/universal_plus_designer.py',
+    'neurodiversity_affirming_engine/executive_function_scaffold_engine.py',
+    'neurodiversity_affirming_engine/sensory_profile_designer.py',
+    'neurodiversity_affirming_engine/communication_diversity_engine.py',
+    'neurodiversity_affirming_engine/mellifluousml_integration.py'
   ],
   governance: {
     council: [
@@ -147,6 +155,30 @@ function runCreativeResolutionAudit(options = {}) {
   };
 }
 
+function runMellifluousAudit(options = {}) {
+  const { spawnSync } = require('child_process');
+  const result = spawnSync('python', [
+    '-c', 'from tools.neurodiversity_affirming_engine import MellifluousIntegration; print("MellifluousML Integration ready")'
+  ], { encoding: 'utf-8', cwd: __dirname });
+  return {
+    success: result.status === 0,
+    stdout: result.stdout,
+    stderr: result.stderr
+  };
+}
+
+function runNeurodiversityAudit(options = {}) {
+  const { spawnSync } = require('child_process');
+  const result = spawnSync('python', [
+    '-c', 'from tools.neurodiversity_affirming_engine import CognitiveAssetAPI; print("Neurodiversity-Affirming Engine ready")'
+  ], { encoding: 'utf-8', cwd: __dirname });
+  return {
+    success: result.status === 0,
+    stdout: result.stdout,
+    stderr: result.stderr
+  };
+}
+
 function generateLesson(options = {}) {
   const { spawnSync } = require('child_process');
   const args = [
@@ -175,5 +207,7 @@ module.exports = {
   runInclusionAudit,
   runAccessibilityAudit,
   runCreativeResolutionAudit,
+  runMellifluousAudit,
+  runNeurodiversityAudit,
   generateLesson
 };

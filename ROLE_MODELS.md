@@ -103,7 +103,7 @@ def bridge_quality(mentor_id, mentee_club, mentor_db, club_db):
 | civil-engineer-001 | Jordan | Civil Engineer | they/them | LEGO cities → engineering → bridge design | rock climbing, gardening | gender_stereotypes, rural_access |
 | software-engineer-001 | Alex | Software Engineer | they/them | yoga → code → conservation tech | yoga, sourdough, speculative fiction | late_starter, queer_nonbinary |
 | marine-ecologist-001 | Dr. Chen | Marine Ecologist | she/her | tide-pooling → marine ecology → kelp forests | calligraphy, marathon running | asian_scientist_stereotype |
-| aerospace-engineer-001 | Sam | Aerospace Engineer | he/him | model rockets → aerospace → satellite propulsion | ukulele, FIRST mentoring | failure_as_data |
+| earth-systems-engineer-001 | Dr. Rivera | Earth Systems Engineer | she/they | rock collecting → geology → critical zone science | hiking, pottery, seed saving | first_gen_college, field_access |
 
 ---
 
