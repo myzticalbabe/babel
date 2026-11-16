@@ -1,0 +1,40 @@
+name: 'Soul Forge Inclusion Audit'
+description: 'Runs the Soul Forge Inclusion Auditor on repository content'
+author: 'Soul Forge Council'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  path:
+    description: 'Path to audit (default: repository root)'
+    required: false
+    default: '.'
+  fail-on:
+    description: 'Failure threshold: any, high, medium'
+    required: false
+    default: 'high'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      shell: bash
+      run: pip install --quiet
+
+    - name: Run Inclusion Audit
+      shell: bash
+      run: python ${{ github.action_path }}/../../tools/audit_inclusion.py --path ${{ inputs.path }} --fail-on ${{ inputs.fail-on }}
+
+    - name: Upload audit report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: inclusion-audit-report
+        path: inclusion_audit_report.json
+        retention-days: 30

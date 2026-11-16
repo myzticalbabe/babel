@@ -5,14 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Soul Forge Inclusion Audit
+        uses: ./.github/actions/audit-inclusion
         with:
-          python-version: '3.11'
-      - name: Install dependencies
-        run: |
-          pip install axe-core playwright
-          playwright install
-      - name: Inclusion Audit
-        run: python tools/audit_inclusion.py --path . --fail-on high
-      - name: Accessibility Audit
-        run: python tools/audit_accessibility.py --path . --fail-on high
+          path: '.'
+          fail-on: 'high'
+      - name: Soul Forge Accessibility Audit
+        uses: ./.github/actions/audit-accessibility
+        with:
+          path: '.'
+          fail-on: 'high'

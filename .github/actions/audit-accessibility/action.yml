@@ -1,0 +1,51 @@
+name: 'Soul Forge Accessibility Audit'
+description: 'Runs the Soul Forge Accessibility Auditor on repository content'
+author: 'Soul Forge Council'
+branding:
+  icon: 'eye'
+  color: 'green'
+
+inputs:
+  path:
+    description: 'Path to audit (default: repository root)'
+    required: false
+    default: '.'
+  fail-on:
+    description: 'Failure threshold: any, high, critical'
+    required: false
+    default: 'critical'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Setup Node.js (for axe-core/playwright)
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install Python dependencies
+      shell: bash
+      run: pip install --quiet
+
+    - name: Install Node dependencies
+      shell: bash
+      run: |
+        npm install -g @axe-core/cli playwright
+        playwright install --with-deps chromium
+
+    - name: Run Accessibility Audit
+      shell: bash
+      run: python ${{ github.action_path }}/../../tools/audit_accessibility.py --path ${{ inputs.path }} --fail-on ${{ inputs.fail-on }}
+
+    - name: Upload audit report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: accessibility-audit-report
+        path: accessibility_audit_report.json
+        retention-days: 30
