@@ -84,7 +84,7 @@ class CognitiveAssetMapper:
                 "measurable_indicators": ["Defect rate", "Precision tolerance", "First-pass yield"],
                 "collaboration_value": "Zero-defect mindset; catches micro-errors"
             }
-        },
+        ],
         
         "adhd": [
             {

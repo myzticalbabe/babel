@@ -194,6 +194,7 @@ class SensoryProfileDesigner:
                 "Modality-specific sensory diet"
             ]
         }
+    }
     
     def __init__(self):
         pass

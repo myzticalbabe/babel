@@ -434,7 +434,7 @@ class CognitiveProfileEngine:
             learner_data.get("interests", ""),
             learner_data.get("challenges", ""),
             learner_data.get("strengths", "")
-        ).lower()
+        ]).lower()
         
         for profile, keywords_list in keywords.items():
             score = sum(1 for kw in keywords_list if kw in learner_text)

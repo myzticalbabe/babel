@@ -195,7 +195,7 @@ class CommunicationDiversityEngine:
                 "rapid_associative": "Map the branches visually",
                 "strategic_empathetic": "Strategic map: 'Show me the territory'",
                 "pattern_symbolic": "Pattern map: 'Show the pattern'"
-            ],
+            },
             soul_forge_vow="VOW I: Attribution of Spirit — The soul knows its smith. Visual thinking carries its maker's mark."
         ),
         
@@ -253,7 +253,7 @@ class CommunicationDiversityEngine:
                 "rapid_associative": "Gesture as branch: 'What does this movement suggest?'",
                 "visual_spatial": "Gesture as diagram: 'Draw that movement'",
                 "strategic_empathetic": "Embodied empathy: 'What does your body know?'"
-            ],
+            },
             soul_forge_vow="VOW II: No Cage for the Flame — Embodied communication cannot be caged."
         ),
         
